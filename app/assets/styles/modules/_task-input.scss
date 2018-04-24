@@ -1,0 +1,51 @@
+.task-input {
+
+    padding: 3rem;
+
+    &__form {
+
+        
+
+    }
+
+    &__task {
+
+        width: 40%;
+        font-family: inherit;
+        font-size: 1.6rem;
+        padding: .5rem 0;
+        border: none;
+        border-bottom: solid $color-gray .1rem;
+        margin-bottom: 1.6rem;
+
+        &:focus {
+
+            outline: none;
+
+        }
+
+    }
+
+    &__btn {
+
+        display: block;
+        padding: 1.3rem 4rem;
+        border: none;
+
+        font-family: inherit;
+        font-size: 1.6rem;
+
+        color: #fff;
+        background-color: $color-secondary;
+
+        transition: all .2s;
+
+        &:hover {
+
+            background-color: $color-secondary-dark;
+
+        }
+
+    }
+
+}
