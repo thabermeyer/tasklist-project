@@ -4,7 +4,7 @@
 
     &__filter {
 
-        width: 40%;
+        width: 100%;
         font-family: inherit;
         font-size: 1.6rem;
         padding: .5rem 0;
@@ -22,8 +22,35 @@
 
     &__list {
 
+        
 
+    }
 
+    &__list-item {
+
+        display: flex;
+        justify-content: space-between;
+
+        list-style-type: none;
+        padding: 1.5rem 2rem;
+        border: solid $color-gray .1rem;
+        border-bottom: none;
+
+        font-size: 1.6rem;
+
+        &:last-child {
+
+            margin-bottom: 2rem;
+            border-bottom: solid $color-gray .1rem;
+
+        }
+
+    }
+
+    &__list-item-icon {
+
+        color: #e67e22;
+        
     }
 
     &__btn {
