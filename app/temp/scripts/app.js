@@ -9038,7 +9038,7 @@ var form = document.querySelector('.task-input__form');
 var taskInput = document.querySelector('.task-input__task');
 var taskBtn = document.querySelector('.task-input__btn');
 var filter = document.querySelector('.task-list__filter');
-var tasklist = document.querySelector('.task-list__list');
+var taskList = document.querySelector('.task-list__list');
 var clearBtn = document.querySelector('.task-list__btn');
 
 // Load all event listeners
@@ -9050,6 +9050,18 @@ function loadEventListeners() {
     // Add task event
 
     form.addEventListener('submit', addTask);
+
+    // Remove task event
+
+    taskList.addEventListener('click', removeTask);
+
+    // Clear task event
+
+    clearBtn.addEventListener('click', clearTasks);
+
+    // Filter task event
+
+    filter.addEventListener('keyup', filterTasks);
 }
 
 // Add Task
@@ -9079,7 +9091,7 @@ function addTask(e) {
 
     // Add class
 
-    link.className = 'task-list__list-item-icon';
+    link.className = 'task-list__list-item-icon delete-item';
 
     // Add icon HTML
 
@@ -9091,13 +9103,59 @@ function addTask(e) {
 
     // Append li to ul
 
-    tasklist.appendChild(li);
+    taskList.appendChild(li);
 
     // Clear input
 
     taskInput.value = '';
 
     e.preventDefault();
+}
+
+// Remove Task
+
+function removeTask(e) {
+
+    if (e.target.parentElement.classList.contains('delete-item')) {
+
+        if (confirm('Are you sure you want to delete this task?')) {
+
+            e.target.parentElement.parentElement.remove();
+        }
+    }
+}
+
+// Clear All Tasks
+
+function clearTasks() {
+
+    if (confirm('Are you sure you want to clear all tasks?')) {
+
+        while (taskList.firstChild) {
+
+            taskList.removeChild(taskList.firstChild);
+        }
+    }
+}
+
+// Filter Tasks
+
+function filterTasks(e) {
+
+    var text = e.target.value.toLowerCase();
+
+    document.querySelectorAll('.task-list__list-item').forEach(function (task) {
+
+        var item = task.firstChild.textContent;
+
+        if (item.toLowerCase().indexOf(text) != -1) {
+
+            task.style.display = 'flex';
+        } else {
+
+            task.style.display = 'none';
+        }
+    });
 }
 
 /***/ })
